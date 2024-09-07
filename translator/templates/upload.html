@@ -1,0 +1,24 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Translate</title>
+</head>
+<body>
+    <h1>Upload and Translate</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload and Translate</button>
+    </form>
+
+    {% if translated_file_path %}
+        <h2>Translated File</h2>
+        <a href="{{ translated_file_path }}" download>Download Translated File</a>
+    {% endif %}
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
